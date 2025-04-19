@@ -13,15 +13,18 @@ const SearchPage = () => {
   const [selectedCategories, setSelectedCatgories] = useState([]);
   const [sortByPrice, setSortByPrice] = useState("");
 
-  const { data, isLoading } = useGetSearchCourseQuery({
-    searchQuery:query,
-    categories:selectedCategories,
-    sortByPrice
-  });
+  const queryObject = {
+    searchQuery: query,
+    categories: [...selectedCategories], // clone array to change reference
+    sortByPrice,
+  };
+  
+  const { data, isLoading } = useGetSearchCourseQuery(queryObject);
 
   const isEmpty = !isLoading && data?.courses.length === 0;
 
   const handleFilterChange = (categories, price) => {
+    console.log("Selected Categories:", categories);
     setSelectedCatgories(categories);
     setSortByPrice(price);
   }

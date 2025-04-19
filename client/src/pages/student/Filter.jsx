@@ -36,6 +36,7 @@ const Filter = ({ handleFilterChange }) => {
         ? prevCategories.filter((id) => id !== categoryId)
         : [...prevCategories, categoryId];
 
+        console.log("New Filtered Categories:", newCategories);
         handleFilterChange(newCategories, sortByPrice);
         return newCategories;
     });
@@ -66,7 +67,7 @@ const Filter = ({ handleFilterChange }) => {
       <div>
         <h1 className="font-semibold mb-2">CATEGORY</h1>
         {categories.map((category) => (
-          <div className="flex items-center space-x-2 my-2">
+          <div key={category.id} className="flex items-center space-x-2 my-2">
             <Checkbox
               id={category.id}
               onCheckedChange={() => handleCategoryChange(category.id)}

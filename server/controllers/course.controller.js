@@ -35,6 +35,7 @@ export const searchCourse = async (req,res) => {
         const {query = "", categories = [], sortByPrice =""} = req.query;
         console.log(categories);
         
+        const categoryArray = Array.isArray(categories) ? categories : categories.split(',');
         // create search query
         const searchCriteria = {
             isPublished:true,
@@ -47,7 +48,7 @@ export const searchCourse = async (req,res) => {
 
         // if categories selected
         if(categories.length > 0) {
-            searchCriteria.category = {$in: categories};
+            searchCriteria.category = { $in: categoryArray.map(category => new RegExp(category, 'i')) };
         }
 
         // define sorting order

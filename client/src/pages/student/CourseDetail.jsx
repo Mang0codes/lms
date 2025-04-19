@@ -41,7 +41,7 @@ const CourseDetail = () => {
           <h1 className="font-bold text-2xl md:text-3xl">
             {course?.courseTitle}
           </h1>
-          <p className="text-base md:text-lg">Course Sub-title</p>
+          <p className="text-base md:text-lg">{course?.subTitle}</p>
           <p>
             Created By{" "}
             <span className="text-[#C0C4FC] underline italic">
@@ -57,15 +57,15 @@ const CourseDetail = () => {
       </div>
       <div className="max-w-7xl mx-auto my-5 px-4 md:px-8 flex flex-col lg:flex-row justify-between gap-10">
         <div className="w-full lg:w-1/2 space-y-5">
-          <h1 className="font-bold text-xl md:text-2xl">Description</h1>
+          <h1 className="font-bold text-xl md:text-2xl">About This Course</h1>
           <p
             className="text-sm"
             dangerouslySetInnerHTML={{ __html: course.description }}
           />
           <Card>
             <CardHeader>
-              <CardTitle>Course Content</CardTitle>
-              <CardDescription>4 lectures</CardDescription>
+              <CardTitle>{course.courseTitle}</CardTitle>
+              <CardDescription>{course.lectures.length} lectures</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
               {course.lectures.map((lecture, idx) => (
@@ -90,9 +90,9 @@ const CourseDetail = () => {
                   controls={true}
                 />
               </div>
-              <h1>Lecture title</h1>
+              <h1>{course.lectures[0].lectureTitle}</h1>
               <Separator className="my-2" />
-              <h1 className="text-lg md:text-xl font-semibold">Course Price</h1>
+              <h1 className="text-lg md:text-xl font-semibold">₹{course.coursePrice}</h1>
             </CardContent>
             <CardFooter className="flex justify-center p-4">
               {purchased ? (

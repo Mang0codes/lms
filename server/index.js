@@ -23,10 +23,12 @@ app.use(cookieParser());
 
 app.use(cors({
     origin: [
-        "http://localhost:5173",
-        "https://lms-client-indol.vercel.app"
-      ],
-    credentials:true
+        "http://localhost:5173", // For local development
+        "https://lms-client-indol.vercel.app" // For production on Vercel
+    ],
+    credentials: true, // Allow cookies to be sent
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow these methods for requests
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers (e.g., for token authorization)
 }));
  
 // apis

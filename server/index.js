@@ -22,7 +22,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin: 'https://lms-client-indol.vercel.app',
+    origin: [
+        "http://localhost:5173",
+        "https://lms-client-indol.vercel.app"
+      ],
     credentials:true
 }));
  

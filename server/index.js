@@ -27,7 +27,7 @@ app.use(cors({
         "https://lms-client-indol.vercel.app" // For production on Vercel
     ],
     credentials: true, // Allow cookies to be sent
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow these methods for requests
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], // Allow these methods for requests
     allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers (e.g., for token authorization)
 }));
  
